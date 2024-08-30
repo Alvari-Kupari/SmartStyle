@@ -1,5 +1,22 @@
 # GradeStyle
 
+## Cite
+
+If you use GradeStyle in your research, please cite the following paper:
+
+```bibtex
+@inproceedings{iddon-icse-2023,
+  author = {Iddon, Callum and Giacaman, Nasser and Terragni, Valerio},
+  title = {{GradeStyle: GitHub-Integrated and Automated Assessment of Java Code Style}},
+  booktitle = {{IEEE/ACM} International Conference on Software Engineering, SEET track},
+  year = {2023},
+  doi = {10.1109/ICSE-SEET58685.2023.00024},
+  pages = {192--197}
+}
+```
+
+You can find a copy of the paper in the [publications](publications) directory.
+
 ## Build
 
 ```bash
