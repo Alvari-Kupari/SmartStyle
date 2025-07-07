@@ -1,5 +1,7 @@
 plugins {
   id "application"
+  id 'com.github.johnrengelman.shadow' version '8.1.1'
+
 }
 
 java {
@@ -15,6 +17,9 @@ repositories {
         url 'https://jitpack.io'
     }
 }
+
+
+
 
 dependencies {
   implementation "com.github.javaparser:javaparser-symbol-solver-core:3.26.3"
@@ -110,6 +115,8 @@ application {
     // Main class
     mainClass = 'nz.ac.auckland.dee.gradestyle.Main'
 }
+
+
 
 
 
