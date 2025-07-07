@@ -1,0 +1,14 @@
+.vscode
+.gradle
+
+build
+bin
+GradeStyle.jar
+
+.classpath
+.project
+.settings
+
+student-reports*
+
+.DS_Store

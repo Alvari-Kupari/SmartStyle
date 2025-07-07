@@ -1,0 +1,113 @@
+plugins {
+  id "application"
+}
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://saxonrepo.github.io/maven-repo/"
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+  implementation "com.github.javaparser:javaparser-symbol-solver-core:3.26.3"
+
+  //implementation "com.puppycrawl.tools:checkstyle:10.21.1"
+  implementation "com.puppycrawl.tools:checkstyle:10.18.0"
+
+
+
+  implementation "io.vavr:vavr:1.0.0-alpha-4"
+  implementation "net.sf.extjwnl:extjwnl:2.0.5"
+  implementation "net.sf.extjwnl:extjwnl-data-wn31:1.2"
+  implementation "net.sourceforge.pmd:pmd-java:7.8.0"
+  implementation "net.steppschuh.markdowngenerator:markdowngenerator:1.3.1.1"
+  implementation "org.apache.commons:commons-configuration2:2.7"
+  implementation "org.apache.commons:commons-csv:1.9.0"
+  implementation "org.apache.commons:commons-lang3:3.12.0"
+  implementation "org.apache.commons:commons-text:1.9"
+  implementation "org.eclipse.jgit:org.eclipse.jgit:6.0.0.202111291000-r"
+  implementation "org.kohsuke:github-api:1.301"
+  implementation "org.slf4j:slf4j-nop:1.7.32"
+  
+  //implementation "net.sf.saxon:Saxon-HE:10.6"
+  //implementation "sax:sax:2.0.1" 
+  implementation "net.sf.saxon:Saxon-HE:12.5"
+
+
+  implementation 'com.github.mauricioaniche:ck:0.7.0'
+
+
+  implementation "javax.xml.bind:jaxb-api:2.3.1"
+  implementation "org.apache.httpcomponents.client5:httpclient5:5.1.3"
+
+  //maven resolution
+  implementation 'org.apache.maven:maven-model:3.8.5'
+  
+  implementation 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api-maven:3.1.4'
+implementation 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-impl-maven:3.1.4'
+
+// Maven Resolver Core libraries
+    implementation "org.eclipse.aether:aether-api:1.1.0"
+    implementation "org.eclipse.aether:aether-impl:1.1.0"
+    implementation "org.eclipse.aether:aether-spi:1.1.0"
+    implementation "org.eclipse.aether:aether-util:1.1.0"
+
+    // Maven Resolver Connector and Transport
+    implementation "org.eclipse.aether:aether-connector-basic:1.1.0"
+    implementation "org.eclipse.aether:aether-transport-file:1.1.0"
+    implementation "org.eclipse.aether:aether-transport-http:1.1.0"
+
+
+
+}
+
+configurations.all {
+    exclude group: 'org.slf4j', module: 'slf4j-nop'
+    
+}
+
+
+
+sourceSets.main.resources.srcDir "src/main/java"
+
+
+task style(type: JavaExec) {
+  mainClass = "nz.ac.auckland.dee.gradestyle.Style"
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+task oop(type: JavaExec) {
+  mainClass = "nz.ac.auckland.dee.gradestyle.Oop"
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+task metrics(type: JavaExec) {
+    group = "CK Analysis"
+    description = "Run CK metrics analysis"
+
+    mainClass = "nz.ac.auckland.dee.gradestyle.ck.CkRunner"
+    classpath = sourceSets.main.runtimeClasspath
+
+}
+
+task runRepos(type: JavaExec) {
+  mainClass = "nz.ac.auckland.dee.gradestyle.githubanalysis.PopularRepositories"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+application {
+    // Main class
+    mainClass = 'nz.ac.auckland.dee.gradestyle.Main'
+}
+
+
+
+
