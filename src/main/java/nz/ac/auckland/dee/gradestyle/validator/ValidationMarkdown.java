@@ -68,7 +68,7 @@ public class ValidationMarkdown implements Markdown.Writer<ValidationResult> {
       Category category = config.getCategory();
       int score = scores.get(category);
       int maxScore = config.getScores().size();
-      String text = score + " / " + maxScore;
+      String text = score + " violations";
 
       total += score;
       max += maxScore;
@@ -76,7 +76,7 @@ public class ValidationMarkdown implements Markdown.Writer<ValidationResult> {
       builder.addRow(category, text);
     }
 
-    builder.addRow(new BoldText("Total"), new BoldText(total + " / " + max));
+    builder.addRow(new BoldText("Total"), new BoldText(total + " violations"));
 
     sb.append(builder.build()).append("\n\n");
   }

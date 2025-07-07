@@ -30,6 +30,11 @@ public class Style {
     // Initialize the CSV writer
     try (ValidationCsv writer =
         new ValidationCsv(config.getCategoryConfigs(), config.getStyleFeedback().getReportsCsv())) {
+
+      ValidationMarkdown markdown = new ValidationMarkdown(config);
+      Markdown<ValidationResult> marker =
+          new Markdown<>(config.getStyleFeedback().getReportsMd(), markdown);
+
       Validator[] validators = {
         new Checkstyle(), new JavaParser(), new Pmd(), new Cpd(), new JavaFx()
       };
@@ -41,6 +46,8 @@ public class Style {
         try {
           ValidationResult result = validation.validateSingleRepo(repo);
           writer.writeResult(result, repo);
+
+          marker.write(result);
           System.out.println("Successfully wrote results for repo: " + repo.getName());
         } catch (ValidatorException e) {
           System.err.println("Validation failed for repo: " + repo.getName());

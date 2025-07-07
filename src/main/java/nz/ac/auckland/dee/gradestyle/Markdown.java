@@ -71,4 +71,12 @@ public class Markdown<T> {
       bufferedWriter.close();
     }
   }
+
+  public void write(T item) throws IOException {
+    Path file = dir.resolve(writer.getFileName(item) + ".md");
+    BufferedWriter bufferedWriter = Files.newBufferedWriter(file);
+
+    bufferedWriter.append(writer.write(item));
+    bufferedWriter.close();
+  }
 }

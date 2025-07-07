@@ -65,6 +65,9 @@ implementation 'org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-impl-maven:3.1
     implementation "org.eclipse.aether:aether-transport-file:1.1.0"
     implementation "org.eclipse.aether:aether-transport-http:1.1.0"
 
+    implementation 'com.sun.activation:jakarta.activation:2.0.1'
+
+
 
 
 }
