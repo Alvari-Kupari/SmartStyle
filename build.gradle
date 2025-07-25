@@ -71,4 +71,12 @@ java {
     mainClass = "gradestyle.Style"
     classpath = sourceSets.main.runtimeClasspath
   }
+
+  jar {
+  manifest {
+    attributes 'Main-Class': 'gradestyle.Style'
+  }
+}
+
+
 }
