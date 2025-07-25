@@ -72,10 +72,16 @@ java {
     classpath = sourceSets.main.runtimeClasspath
   }
 
-  jar {
+tasks.named('shadowJar') {
+  archiveClassifier.set('')
+  mergeServiceFiles()
   manifest {
     attributes 'Main-Class': 'gradestyle.Style'
   }
+}
+
+tasks.build {
+  dependsOn shadowJar
 }
 
 
